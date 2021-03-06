@@ -1,0 +1,29 @@
+<%- include("partials/header2.ejs"); -%>
+    <div class="page-wrapper bg-grey p-t-100 p-b-100 font-robo">
+        <div class="wrapper wrapper--w680">
+            <div class="card card-1">
+                <div class="card-heading"><img class="image" src="img/truck2.jpg"></div>
+                <div class="card-body new">
+                    <h2 class="title">Sign Up</h2>
+                    <form method="POST">
+                        <div class="input-group">
+                            <input class="input--style-1" type="text" placeholder="NAME" name="name">
+                        </div>
+                        <div class="input-group">
+                            <input class="input--style-1" type="password" placeholder="PASSWORD" name="password">
+                        </div>
+                        <div class="input-group">
+                            <input class="input--style-1" type="text" placeholder="CONFIRM PASSWORD" name="password2">
+                        </div>
+                        <div class="p-t-20">
+                            <button class="btn btn--radius btn--green" type="submit">Sign Up</button>
+                        </div>
+                        <br>
+                        <a href="/signin">Already have an account? Sign In.</a>
+                    </form>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  <%- include("partials/footer2.ejs"); -%>
