@@ -3,6 +3,9 @@ const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const app = express();
 
+var signincontent="You have succesfully signed up .";
+var failcontent="Oops! It seems that something went wrong. Please try again";
+
 app.set('view engine', 'ejs');
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
@@ -41,6 +44,14 @@ app.get("/signup",(req,res)=>
 app.get("/dash",(req,res)=>
 {
   res.render("dash");
+});
+app.get("/success",(req,res)=>
+{
+  res.render("success", { content: signincontent });
+});
+app.get("/fail",(req,res)=>
+{
+  res.render("fail", { content: failcontent });
 });
 app.listen(3000,()=> {
   console.log("Server started on port 3000");
