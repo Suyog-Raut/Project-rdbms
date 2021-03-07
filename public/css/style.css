@@ -176,7 +176,7 @@ section {
 .header.header-scrolled {
   background: #fff;
   padding: 15px 0;
-  box-shadow: 0px 2px 20px rgba(1, 41, 112, 0.1);
+  box-shadow: 0px 3px 23px rgba(1, 41, 112, 0.1);
 }
 
 
@@ -348,7 +348,7 @@ section {
   opacity: 1;
   visibility: visible;
   background: #fff;
-  box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
+  box-shadow: 0px 0px 35px rgba(127, 137, 161, 0.25);
 }
 
 .navbar-mobile .dropdown ul li {
@@ -496,7 +496,7 @@ section {
   transition: 0.5s;
   color: #fff;
   background: #03C04A;
-  box-shadow: 0px 5px 25px rgba(65, 84, 241, 0.3);
+  box-shadow: 0px 7px 27px rgba(65, 84, 241, 0.3);
 }
 
 .about .btn-read-more span {
@@ -521,7 +521,7 @@ section {
 --------------------------------------------------------------*/
 .values .box {
   padding: 30px;
-  box-shadow: 0px 0 5px rgba(1, 41, 112, 0.08);
+  box-shadow: 0px 0 9px rgba(1, 41, 112, 0.08);
   text-align: center;
   transition: 0.3s;
   height: 100%;
@@ -541,7 +541,7 @@ section {
 }
 
 .values .box:hover {
-  box-shadow: 0px 0 30px rgba(1, 41, 112, 0.08);
+  box-shadow: 0px 0 35px rgba(1, 41, 112, 0.08);
 }
 
 .values .box:hover img {
@@ -561,7 +561,7 @@ section {
   padding: 30px;
   width: 100%;
   background: #fff;
-  box-shadow: 0px 0 30px rgba(2, 41, 112, 0.08);
+  box-shadow: 0px 0 35px rgba(2, 41, 112, 0.08);
 }
 
 .counts .count-box i {
@@ -590,7 +590,7 @@ section {
 --------------------------------------------------------------*/
 .features .feature-box {
   padding: 24px 20px;
-  box-shadow: 0px 0 30px rgba(1, 41, 112, 0.08);
+  box-shadow: 0px 0 35px rgba(1, 41, 112, 0.08);
   transition: 0.3s;
   height: 100%;
 }
@@ -714,7 +714,7 @@ section {
 # Services
 --------------------------------------------------------------*/
 .services .service-box {
-  box-shadow: 0px 0 30px rgba(1, 41, 112, 0.08);
+  box-shadow: 0px 0 35px rgba(1, 41, 112, 0.08);
   height: 100%;
   padding: 60px 30px;
   text-align: center;
@@ -870,7 +870,7 @@ section {
   padding: 40px 20px;
   background: #fff;
   text-align: center;
-  box-shadow: 0px 0 30px rgba(1, 41, 112, 0.08);
+  box-shadow: 0px 0 35px rgba(1, 41, 112, 0.08);
   border-radius: 4px;
   position: relative;
   overflow: hidden;
@@ -879,7 +879,7 @@ section {
 
 .pricing .box:hover {
   transform: scale(1.1);
-  box-shadow: 0px 0 30px rgba(1, 41, 112, 0.1);
+  box-shadow: 0px 0 35px rgba(1, 41, 112, 0.1);
 }
 
 .pricing h3 {
@@ -1196,7 +1196,7 @@ section {
 
 .portfolio-details .portfolio-info {
   padding: 30px;
-  box-shadow: 0px 0 30px rgba(1, 41, 112, 0.08);
+  box-shadow: 0px 0 35px rgba(1, 41, 112, 0.08);
 }
 
 .portfolio-details .portfolio-info h3 {
@@ -1238,7 +1238,7 @@ section {
   box-sizing: content-box;
   padding: 30px;
   margin: 40px 30px;
-  box-shadow: 0px 0 20px rgba(1, 41, 112, 0.1);
+  box-shadow: 0px 0 25px rgba(1, 41, 112, 0.1);
   background: #fff;
   min-height: 320px;
   display: flex;
@@ -1331,7 +1331,7 @@ section {
   text-align: center;
   border-radius: 5px;
   background: #fff;
-  box-shadow: 0px 0 30px rgba(1, 41, 112, 0.08);
+  box-shadow: 0px 0 35px rgba(1, 41, 112, 0.08);
   transition: 0.3s;
 }
 
@@ -1408,7 +1408,7 @@ section {
 
 .team .member:hover {
   transform: scale(1.08);
-  box-shadow: 0px 0 30px rgba(1, 41, 112, 0.1);
+  box-shadow: 0px 0 35px rgba(1, 41, 112, 0.1);
 }
 
 .team .member:hover .social {
@@ -1457,7 +1457,7 @@ section {
 # Recent Blog Posts
 --------------------------------------------------------------*/
 .recent-blog-posts .post-box {
-  box-shadow: 0px 0 30px rgba(1, 41, 112, 0.08);
+  box-shadow: 0px 0 35px rgba(1, 41, 112, 0.08);
   transition: 0.3s;
   height: 100%;
   overflow: hidden;
@@ -1653,7 +1653,7 @@ section {
 .blog .entry {
   padding: 30px;
   margin-bottom: 60px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
 }
 
 .blog .entry .entry-img {
@@ -1830,7 +1830,7 @@ section {
 .blog .blog-author {
   padding: 20px;
   margin-bottom: 30px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
 }
 
 .blog .blog-author img {
@@ -1919,7 +1919,7 @@ section {
 .blog .blog-comments .reply-form {
   margin-top: 30px;
   padding: 30px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
 }
 
 .blog .blog-comments .reply-form h4 {
@@ -2003,7 +2003,7 @@ section {
 .blog .sidebar {
   padding: 30px;
   margin: 0 0 60px 20px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
 }
 
 .blog .sidebar .sidebar-title {
