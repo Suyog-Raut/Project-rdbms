@@ -61,8 +61,8 @@ const Consignment = new mongoose.Schema({
   Sender : String,
   Receiver : String,
   Source_Branch : String,
-  Destination_Branch : String,
-  Is_Truck_Assigned : String
+  Destination_Branch : String
+  // Is_Truck_Assigned : String
 });
 
 const Customer = new mongoose.Schema({
@@ -81,17 +81,10 @@ const Truck = new mongoose.Schema({
   Usage : String
 });
 
-const Price = new mongoose.Schema({
-  Capacity : String,
-  Price_Per_Km : String,
-  No_Of_Csg_Handled : Number,
-  Status : String,
-  Usage : String
-});
-
 const Bill = new mongoose.Schema({
   CSG_No : Number,
   Customer_ID : Number,
+  // source and reciever name
   Source_Branch : String,
   Destination_Branch : String,
   Price : Number,
