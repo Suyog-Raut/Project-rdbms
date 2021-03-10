@@ -79,9 +79,9 @@ app.get("/new",(req,res)=>
 {
   res.render("new");
 });
-app.get("/dash",(req,res)=>
+app.get("/dashm",(req,res)=>
 {
-  res.render("dash");
+  res.render("dashm");
 });
 
 app.listen(3000,()=> {
