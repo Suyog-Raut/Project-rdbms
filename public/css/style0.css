@@ -429,6 +429,23 @@ ul.sidebar-menu li a.active i {
     width: 100%;
 }
 
+.form-popup {
+  margin-left: 27%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 3%;
+  width:45%;
+  background-color: #f7b3b3;
+  box-shadow: 0px 3px 23px rgba(140, 141, 132, 0.4);
+}
+
+.form-popup input{
+  border: none;
+  width: 45%;
+  margin: 7px;
+  padding: 7px;
+}
+
 a.logo {
     font-size: 24px;
     color: #1e90ff;

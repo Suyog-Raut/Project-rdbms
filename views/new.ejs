@@ -41,7 +41,9 @@
         <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
       </div>
       <!--logo start-->
-      <a href="index.ejs" class="logo"><p><img src="img/logo.png" style="width:30px;">TransportCo</p></a>
+      <a href="/" class="logo">
+        <p><img src="img/logo.png" style="width:30px;"> TransportCo</p>
+      </a>
       <!--logo end-->
       <div class="nav notify-row" id="top_menu">
         <!--  notification start -->
@@ -51,7 +53,7 @@
             <a data-toggle="dropdown" class="dropdown-toggle" href="new.ejs#">
               <i class="fa fa-tasks"></i>
               <span class="badge bg-theme">4</span>
-              </a>
+            </a>
             <ul class="dropdown-menu extended tasks-bar">
               <div class="notify-arrow notify-arrow-green"></div>
               <li>
@@ -143,24 +145,24 @@
           <p class="centered"><img src="img/profile-user.png" class="img-circle" width="80"></p>
           <h5 class="centered">Sam Soffes</h5>
           <li class="mt">
-            <a class="active" href="index.html">
+            <a class="active">
               <i class="fa fa-dashboard"></i>
               <span>Dashboard</span>
-              </a>
+            </a>
           </li>
           <li>
-            <a href="inbox.html">
+            <a>
               <i class="fa fa-envelope"></i>
               <span>Mail </span>
               <span class="label label-theme pull-right mail-info">2</span>
-              </a>
+            </a>
           </li>
 
           <li>
-            <a href="google_maps.html">
+            <a>
               <i class="fa fa-map-marker"></i>
               <span>Google Maps </span>
-              </a>
+            </a>
           </li>
         </ul>
         <!-- sidebar menu end-->
@@ -176,7 +178,6 @@
         <div class="row">
           <div class="col-lg-9 main-chart">
             <!--CUSTOM CHART START -->
-
             <div class="border-head">
               <h3>USER VISITS</h3>
             </div>
@@ -222,71 +223,101 @@
 
             <div class="row mt">
               <!-- SERVER STATUS PANELS -->
-              <div class="col-md-4 col-sm-4 mb">
-                <div class="grey-panel pn donut-chart">
+              <div class="col-md-12 col-sm-4 mb">
+                <div class="grey-panel donut-chart">
                   <div class="grey-header">
-                    <h5>EDIT</h5>
+                    <h3>EDIT</h3>
+                    <h4>The employee details</h4>
                   </div>
-
+                  <button class="btn btn-lg" onclick="openform()">Edit</button>
+                  <div class="form-popup" style="display:none;" id="1stform">
+                    <form action="" class="form-container">
+                      <h1>Edit Employee details</h1>
+                      <input type="text" placeholder="Enter the employee Id" name="empId" required>
+                      <input type="text" placeholder="Enter the column to edit" name="empCol" required>
+                      <input type="text" placeholder="Enter the data" name="empData" required><br><br>
+                      <button type="submit" class="btn btn-md" onclick="openform()">Done</button>
+                    </form>
+                    <br>
+                  </div>
 
                 </div>
                 <!-- /grey-panel -->
               </div>
               <!-- /col-md-4-->
-              <div class="col-md-4 col-sm-4 mb">
-                <div class="darkblue-panel pn">
+              <div class="col-md-12 col-sm-4 mb">
+                <div class="darkblue-panel">
                   <div class="darkblue-header">
-                    <h5>EDIT</h5>
+                    <h3>ADD</h3>
+                    <h4>The employee details</h4>
                   </div>
-
-
+                  <button class="btn btn-lg" onclick="openform1()">Edit</button>
+                  <div class="form-popup" style="display:none;" id="2ndform">
+                    <form action="" class="form-container">
+                      <h1>Add Employee details</h1>
+                      <input type="text" placeholder="Enter the employee Id" name="empId" required>
+                      <input type="text" placeholder="Enter the column to edit" name="empCol" required>
+                      <input type="text" placeholder="Enter the data" name="empData" required><br><br>
+                      <button type="submit" class="btn btn-md" onclick="openform1()">Done</button>
+                    </form>
+                    <br>
+                  </div>
                 </div>
                 <!--  /darkblue panel -->
               </div>
               <!-- /col-md-4 -->
-              <div class="col-md-4 col-sm-4 mb">
+              <div class="col-md-12 col-sm-4 mb">
                 <!-- REVENUE PANEL -->
-                <div class="green-panel pn">
+                <div class="green-panel">
                   <div class="green-header">
-                    <h5>EDIT</h5>
+                    <h3>EDIT</h3>
+                    <h4>Edit something</h4>
                   </div>
+                  <button class="btn btn-lg" onclick="openform2()">Edit</button>
+                  <div class="form-popup" style="display:none;" id="3rdform">
+                    <form action="" class="form-container">
+                      <h1>Edit Customer details</h1>
+                      <input type="text" placeholder="Enter the employee Id" name="empId" required>
+                      <input type="text" placeholder="Enter the column to edit" name="empCol" required>
+                      <input type="text" placeholder="Enter the data" name="empData" required><br><br>
+                      <button type="submit" class="btn btn-md" onclick="openform2()">Done</button>
+                    </form>
+                    <br>
+                  </div>
+                </div>
+                <!-- /col-md-4 -->
 
-                </div>
               </div>
-              <!-- /col-md-4 -->
-
-            </div>
-            <!-- /row -->
-            <div class="row">
-              <!-- WEATHER PANEL -->
-              <div class="col-md-4 mb">
-                <div class="weather pn">
-                  <i class="fa fa-cloud fa-4x"></i>
-                  <h2>11º C</h2>
-                  <h4>BUDAPEST</h4>
+              <!-- /row -->
+              <div class="row">
+                <!-- WEATHER PANEL -->
+                <div class="col-md-4 mb">
+                  <div class="weather pn">
+                    <i class="fa fa-cloud fa-4x"></i>
+                    <h2>11º C</h2>
+                    <h4>BUDAPEST</h4>
+                  </div>
                 </div>
-              </div>
-              <!-- /col-md-4-->
-              <div class="col-md-4 mb">
-                <div class="twitter-panel pn">
-                  <i class="fa fa-twitter fa-4x"></i>
-                  <p>Dashio is here! Take a look and enjoy this new Bootstrap Dashboard theme.</p>
-                  <p class="user">@Alvrz_is</p>
+                <!-- /col-md-4-->
+                <div class="col-md-4 mb">
+                  <div class="twitter-panel pn">
+                    <i class="fa fa-twitter fa-4x"></i>
+                    <p>Dashio is here! Take a look and enjoy this new Bootstrap Dashboard theme.</p>
+                    <p class="user">@Alvrz_is</p>
+                  </div>
                 </div>
-              </div>
-              <div class="col-md-4 mb">
-                <!-- INSTAGRAM PANEL -->
-                <div class="instagram-panel pn">
-                  <i class="fa fa-instagram fa-4x"></i>
-                  <p>@THISISYOU<br/> 5 min. ago
-                  </p>
-                  <p><i class="fa fa-comment"></i> 18 | <i class="fa fa-heart"></i> 49</p>
+                <div class="col-md-4 mb">
+                  <!-- INSTAGRAM PANEL -->
+                  <div class="instagram-panel pn">
+                    <i class="fa fa-instagram fa-4x"></i>
+                    <p>@THISISYOU<br /> 5 min. ago
+                    </p>
+                    <p><i class="fa fa-comment"></i> 18 | <i class="fa fa-heart"></i> 49</p>
+                  </div>
                 </div>
-              </div>
               </div>
               <!-- /col-md-8  -->
-            </div>
-
+            </div></div>
             <!-- /row -->
             <div class="col-lg-3 ds">
               <!--COMPLETED ACTIONS DONUTS CHART-->
@@ -315,7 +346,8 @@
                       <strong>$ 890,00 | 15%</strong>
                     </div>
                     <br>
-                    <div class="sparkline" data-type="line" data-resize="true" data-height="75" data-width="90%" data-line-width="1" data-line-color="#fff" data-spot-color="#fff" data-fill-color="" data-highlight-line-color="#fff" data-spot-radius="4" data-data="[200,135,667,333,526,996,564,123,890,564,455]"></div>
+                    <div class="sparkline" data-type="line" data-resize="true" data-height="75" data-width="90%" data-line-width="1" data-line-color="#fff" data-spot-color="#fff" data-fill-color="" data-highlight-line-color="#fff"
+                      data-spot-radius="4" data-data="[200,135,667,333,526,996,564,123,890,564,455]"></div>
                   </div>
                 </div>
               </div>
@@ -366,14 +398,14 @@
         </div>
         <a href="new.ejs#" class="go-top">
           <i class="fa fa-angle-up"></i>
-          </a>
+        </a>
       </div>
     </footer>
     <!--footer end-->
   </section>
   <!-- js placed at the end of the document so the pages load faster -->
   <script src="lib/jquery/jquery.min.js"></script>
-
+  <script src="lib/popup.js"></script>
   <script src="lib/bootstrap/js/bootstrap.min.js"></script>
   <script class="include" type="text/javascript" src="lib/jquery.dcjqaccordion.2.7.js"></script>
   <script src="lib/jquery.scrollTo.min.js"></script>
