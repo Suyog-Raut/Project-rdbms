@@ -3,7 +3,6 @@ const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const app = express();
 // const mongoose = require('mongoose');
-// mongoose.connect('mongodb://localhost:27017/test', {useNewUrlParser: true, useUnifiedTopology: true});
 
 require("./db/conn");
 
@@ -24,25 +23,6 @@ app.get("/register",(req,res)=>
   res.render("register");
 });
 
-app.post("/register",async(req,res)=>
-{
-  try {
-
-      const UserInput = new bookvehicle({
-        Name : req.body.name,
-        Address : req.body.address,
-        Mobile_No : req.body.mobile,
-        Email_Id : req.body.email
-      })
-
-      const input = await UserInput.save();
-      res.status(201).render("index");
-
-  } catch (error) {
-      res.status(400).send(error);
-  }
-
-});
 
 app.get("/find",(req,res)=>
 {
