@@ -24,3 +24,9 @@ if (x.style.display==="none"){
   x.style.display="none";
 }
 }
+
+function getPrice(weight){
+
+  return(1500 + weight*10)
+
+}
