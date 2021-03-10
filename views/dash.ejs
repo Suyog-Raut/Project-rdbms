@@ -22,7 +22,7 @@
 
   <!-- Template Main CSS File -->
   <link rel="stylesheet" type="text/css" href="/css/style.css">
-
+<link rel="stylesheet" type="text/css" href="/css/main.css">
 </head>
 
 <body>
@@ -38,7 +38,7 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><p>Welcome!</p></li>
+          <li><h3>Welcome!</h3></li>
           <li></li>
           <li></li>
         </ul>
@@ -47,18 +47,31 @@
 
     </div>
   </header><!-- End Header -->
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+<div style="padding-top:100px;text-align:center;">
 
-<br><br>
-<br>
-<br>
+    <h1>Management Controlls.</h1>
+    <button class="btn btn-lg dash-btn" onclick="appear()">Edit Customer details</button>
+    <div id="edit-cus" class="wrapper wrapper--w680">
+        <div class="card card-1">
+            <div class="card-body new">
+              <div style="text-align: center;">
+                <form method="POST">
+                    <div class="input-group">
+                        <input class="input--style-1" type="text" placeholder="NAME" name="name">
+                    </div>
+                    <div class="input-group">
+                        <input class="input--style-1" type="password" placeholder="PASSWORD" name="password">
+                    </div>
+                    <div class="p-t-20">
+                        <button class="btn btn--radius btn--green" type="submit">Done</button>
+                    </div>
+                </form>
+                </div>
+            </div>
+            </div>
+        </div>
+
+</div>
 <footer id="footer" class="footer">
 
   <div class="footer-top">
@@ -111,7 +124,7 @@
 
 <!-- Template Main JS File -->
 <script src="/js/main.js"></script>
-
+<script src="/js/dash.js"></script>
 </body>
 
 </html>

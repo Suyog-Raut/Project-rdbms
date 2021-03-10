@@ -33,7 +33,10 @@ app.get("/signin",(req,res)=>
 {
   res.render("signin");
 });
-
+app.get("/new",(req,res)=>
+{
+  res.render("new");
+});
 app.get("/dash",(req,res)=>
 {
   res.render("dash");
