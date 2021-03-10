@@ -2,11 +2,11 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const app = express();
-// const mongoose = require('mongoose');
 
 require("./db/conn");
 
-const bookvehicle = require("./models/bookvehicle")
+const userDetail = require("./models/userDetail")
+const ConsgDetail = require("./models/ConsgDetail")
 
 app.use(express.json());
 app.use(express.urlencoded({extended:false}))
@@ -40,15 +40,29 @@ app.get("/book",(req,res)=>
 app.post("/book",async(req,res)=>
 {
   try {
-
-      const UserInput = new bookvehicle({
+      
+      var uid = new Date().getMillisecondnows();
+      var cid = Math.floor(Math.random() * 100);
+      const UserInput = new userDetail({
+        User_Id : uid,
         Name : req.body.name,
         Address : req.body.address,
         Mobile_No : req.body.mobile,
-        Email_Id : req.body.email
+        Email_Id : req.body.email 
+      })
+
+      const consgInput = new ConsgDetail({
+        Csg_No : cid,
+        User_Id : uid,
+        Weight : req.body.weight,
+        Sender : req.body.sname,
+        Receiver : req.body.rname,
+        Source_Branch : req.body.plocation,
+        Destination_Branch : req.body.dlocation 
       })
 
       const input = await UserInput.save();
+      const input1 = await consgInput.save();
       res.status(201).render("index");
 
   } catch (error) {
@@ -86,23 +100,6 @@ app.listen(3000,()=> {
 //   Email_Id : String
 // });
 
-// const Consignment = new mongoose.Schema({
-//   Csg_No : Number,
-//   Volume : Number,
-//   Sender : String,
-//   Receiver : String,
-//   Source_Branch : String,
-//   Destination_Branch : String
-//   // Is_Truck_Assigned : String
-// });
-
-// const Customer = new mongoose.Schema({
-//   Name : String,
-//   Address : String,
-//   //Customer_Id : String,
-//   Mobile_No : Number,
-//   Email_Id : String
-// });
 
 // const Truck = new mongoose.Schema({
 //   Truck_No : String,
