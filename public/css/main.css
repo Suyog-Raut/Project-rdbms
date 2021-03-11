@@ -194,6 +194,18 @@ text-decoration: none;
   padding-top: 20px;
 }
 
+.p-b-20 {
+  padding-bottom: 20px;
+}
+
+.m-b-10 {
+  margin-bottom: 10px;
+}
+
+.m-t-10 {
+  margin-top: 10px;
+}
+
 .p-b-100 {
   padding-bottom: 100px;
 }

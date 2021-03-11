@@ -14,13 +14,14 @@ app.use(express.urlencoded({extended:false}))
 app.set('view engine', 'ejs');
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
+const price=[];
 app.get("/",(req,res)=>
 {
   res.render("index");
 });
 app.get("/register",(req,res)=>
 {
-  res.render("register");
+  res.render("register",{price:price});
 });
 
 
@@ -35,6 +36,10 @@ app.get("/check",(req,res)=>
 app.get("/book",(req,res)=>
 {
   res.render("book");
+});
+app.get("/check2",(req,res)=>
+{
+  res.render("check2");
 });
 
 app.post("/book",async(req,res)=>
@@ -58,15 +63,18 @@ app.post("/book",async(req,res)=>
         Sender : req.body.sname,
         Receiver : req.body.rname,
         Source_Branch : req.body.plocation,
-        Destination_Branch : req.body.dlocation
+        Destination_Branch : req.body.dlocation,
       })
-
+      const weight = {
+         w: req.body.weight
+      }
+      price.push(weight);
       const input = await UserInput.save();
       const input1 = await consgInput.save();
-      res.status(201).render("/");
+      res.redirect("/register");
 
   } catch (error) {
-      res.status(400).send(error);
+      res.send(error);
   }
 
 });
