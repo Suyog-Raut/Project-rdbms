@@ -34,9 +34,9 @@ function getPrice(){
 function openGet(){
   var p= 1500 + document.getElementById("weight1").value*10;
   var r = confirm("According to present situation and taking in account the pickup and delivery location, the consignment cost will be Rs. "+ p+" . Press OK to confirm this order. Thank You.");
-  if(r = true){
-
+  if(!r){
+   return false;
   } else {
-  
+    this.form.submit();
   }
 }
