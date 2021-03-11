@@ -25,8 +25,18 @@ if (x.style.display==="none"){
 }
 }
 
-function getPrice(weight){
+function getPrice(){
+  var weight = getElementById("weight1").value;
+  var price= 1500 + weight*10;
+  document.getElementById("display").innerHtml= price;
+}
 
-  return(1500 + weight*10)
+function openGet(){
+  var p= 1500 + document.getElementById("weight1").value*10;
+  var r = confirm("According to present situation and taking in account the pickup and delivery location, the consignment cost will be Rs. "+ p+" . Press OK to confirm this order. Thank You.");
+  if(r = true){
 
+  } else {
+  
+  }
 }

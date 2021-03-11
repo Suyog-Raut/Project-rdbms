@@ -40,7 +40,7 @@ app.get("/book",(req,res)=>
 app.post("/book",async(req,res)=>
 {
   try {
-      
+
       var uid = new Date().getMillisecondnows();
       var cid = Math.floor(Math.random() * 100);
       const UserInput = new userDetail({
@@ -48,7 +48,7 @@ app.post("/book",async(req,res)=>
         Name : req.body.name,
         Address : req.body.address,
         Mobile_No : req.body.mobile,
-        Email_Id : req.body.email 
+        Email_Id : req.body.email
       })
 
       const consgInput = new ConsgDetail({
@@ -58,7 +58,7 @@ app.post("/book",async(req,res)=>
         Sender : req.body.sname,
         Receiver : req.body.rname,
         Source_Branch : req.body.plocation,
-        Destination_Branch : req.body.dlocation 
+        Destination_Branch : req.body.dlocation
       })
 
       const input = await UserInput.save();
