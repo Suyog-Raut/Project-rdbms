@@ -63,7 +63,7 @@ app.post("/book",async(req,res)=>
 
       const input = await UserInput.save();
       const input1 = await consgInput.save();
-      res.status(201).render("index");
+      res.status(201).render("/");
 
   } catch (error) {
       res.status(400).send(error);
