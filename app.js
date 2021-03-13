@@ -2,11 +2,13 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const app = express();
+const bcrypt = require("bcrypt");
 
 require("./db/conn");
 
 const userDetail = require("./models/userDetail")
 const ConsgDetail = require("./models/ConsgDetail")
+const SigninDetail = require("./models/Signin")
 
 app.use(express.json());
 app.use(express.urlencoded({extended:false}))
@@ -40,6 +42,27 @@ app.get("/book",(req,res)=>
 app.get("/check2",(req,res)=>
 {
   res.render("check2");
+});
+app.get("/login", (req, res) => {
+  res.render("signin");
+});
+
+app.post("/login", async (req, res) => {
+  const email = req.body.email;
+  const password = req.body.password;
+  const foundUser = await SigninDetail.findAndValidate(email, password);
+ 
+  if (foundUser) {
+      req.session.userId = foundUser._id;
+      if (email === "admin@test.com" && password === "123456") {
+          res.redirect("/new")
+      }
+      else {
+          res.redirect("/dashm");
+      }
+  } else {
+    res.redirect("/");
+  }
 });
 
 app.post("/book",async(req,res)=>

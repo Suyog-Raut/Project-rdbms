@@ -5,11 +5,12 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev" : "nodemon src/app.js"
+    "dev": "nodemon src/app.js"
   },
   "author": "me",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "body-parser": "^1.18.3",
     "ejs": "^2.6.1",
     "express": "^4.17.1",
