@@ -148,17 +148,30 @@
                     <h3>EDIT</h3>
                     <h4>The customer details</h4>
                   </div>
-                  <button class="btn btn-lg btn-theme03" onclick="openform()">Edit</button>
-                  <div class="form-popup" style="display:none;" id="1stform">
-                    <form action="" class="form-container">
-                      <h1>Edit Customer details</h1>
-                      <input type="text" placeholder="Enter the customer Id" name="cusId" required>
-                      <input type="text" placeholder="Enter the column to edit" name="cusCol" required>
-                      <input type="text" placeholder="Enter the data" name="cusData" required><br><br>
-                      <button type="submit" class="btn btn-md btn-theme03" onclick="openform()">Done</button>
-                    </form>
-                    <br>
-                  </div>
+                  <button type="button" class="btn btn-lg btn-theme03" data-toggle="modal" data-target="#myModal">Edit</button>
+
+<!-- Modal -->
+<div class="modal fade form-popup" id="myModal" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header form-container">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Edit Customer details</h4>
+      </div>
+      <div class="modal-body">
+        <input type="text" placeholder="Enter the customer Id" name="cusId" required><br>
+        <input type="text" placeholder="Enter the column to edit" name="cusCol" required><br>
+        <input type="text" placeholder="Enter the data" name="cusData" required><br><br>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-md btn-theme04" data-dismiss="modal">Done</button>
+      </div>
+    </div>
+
+  </div>
+</div>
 
                 </div>
                 <!-- /grey-panel -->
@@ -170,17 +183,33 @@
                     <h3>ADD</h3>
                     <h4>The customer details</h4>
                   </div>
-                  <button class="btn btn-lg btn-theme04" onclick="openform1()">Edit</button>
-                  <div class="form-popup" style="display:none;" id="2ndform">
-                    <form action="" class="form-container">
-                      <h1>Add Customer details</h1>
-                      <input type="text" placeholder="Enter the employee Id" name="empId" required>
-                      <input type="text" placeholder="Enter the column to edit" name="empCol" required>
-                      <input type="text" placeholder="Enter the data" name="empData" required><br><br>
-                      <button type="submit" class="btn btn-md btn-theme04" onclick="openform1()">Done</button>
-                    </form>
-                    <br>
-                  </div>
+                  <button type="button" class="btn btn-lg btn-theme04" data-toggle="modal" data-target="#myModal2">Edit</button>
+
+  <!-- Modal -->
+  <div class="modal fade form-popup" id="myModal2" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header form-container">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Add Customer details</h4>
+      </div>
+      <div class="modal-body">
+        <input type="text" placeholder="Enter the customer Id" name="cusId" required><br>
+        <input type="text" placeholder="Enter the column to edit" name="cusCol" required><br>
+        <input type="text" placeholder="Enter the column to edit" name="cusCol" required><br>
+        <input type="text" placeholder="Enter the column to edit" name="cusCol" required><br>
+        <input type="text" placeholder="Enter the column to edit" name="cusCol" required><br>
+        <input type="text" placeholder="Enter the data" name="cusData" required><br><br>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-md btn-theme04" data-dismiss="modal">Done</button>
+      </div>
+    </div>
+
+  </div>
+  </div>
                 </div>
                 <!--  /darkblue panel -->
               </div>
@@ -189,20 +218,29 @@
                 <!-- REVENUE PANEL -->
                 <div class="green-panel pb">
                   <div class="green-header" style="color: #fff;">
-                    <h3>EDIT</h3>
-                    <h4>Edit something</h4>
+                    <h3>DELETE</h3>
+                    <h4>Delete Customer details</h4>
                   </div>
-                  <button class="btn btn-lg btn-theme02" onclick="openform2()">Edit</button>
-                  <div class="form-popup" style="display:none;" id="3rdform">
-                    <form action="" class="form-container">
-                      <h1>Edit Customer details</h1>
-                      <input type="text" placeholder="Enter the employee Id" name="empId" required>
-                      <input type="text" placeholder="Enter the column to edit" name="empCol" required>
-                      <input type="text" placeholder="Enter the data" name="empData" required><br><br>
-                      <button type="submit" class="btn btn-md btn-theme02" onclick="openform2()">Done</button>
-                    </form>
-                    <br>
-                  </div>
+                  <button type="button" class="btn btn-lg btn-theme02" data-toggle="modal" data-target="#myModal3">Delete</button>
+
+  <!-- Modal -->
+  <div class="modal fade form-popup" id="myModal3" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header form-container">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Delete Customer details</h4>
+      </div>
+      <div class="modal-body">
+        <input type="text" placeholder="Enter the customer Id" name="cusId" required><br>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-md btn-theme04" data-dismiss="modal">Delete</button>
+      </div>
+    </div>
+    </div>    </div>
                 </div>
                 <!-- /col-md-4 -->
 

@@ -1,3 +1,4 @@
+
 /**
 * Template Name: Dashio
 * Template URL: https://templatemag.com/dashio-bootstrap-admin-template/
@@ -242,11 +243,11 @@ ul.top-menu > li > .logout {
     width: 210px;
     height: 100%;
     position: fixed;
-    background: #2f323a;
+    background: #00d27f;
 }
 
 #sidebar h5 {
-	color: #f2f2f2;
+	color: #000;
 	font-weight: 700;
 }
 
@@ -360,7 +361,7 @@ ul.sidebar-menu li a span{
 }
 
 ul.sidebar-menu li a{
-    color: #aeb2b7;
+    color: #000;
     text-decoration: none;
     display: block;
     padding: 15px 0 15px 10px;
@@ -375,7 +376,7 @@ ul.sidebar-menu li a{
 
 ul.sidebar-menu li a.active, ul.sidebar-menu li a:hover, ul.sidebar-menu li a:focus {
     background: #26abff;
-    color: #fff;
+    color: #000;
     display: block;
 
     -webkit-transition: all 0.3s ease;
@@ -392,11 +393,11 @@ ul.sidebar-menu li a i {
 }
 
 ul.sidebar-menu li a:hover i, ul.sidebar-menu li a:focus i {
-    color: #fff;
+    color: #000;
 }
 
 ul.sidebar-menu li a.active i {
-    color: #fff;
+    color: #000;
 }
 
 
@@ -443,15 +444,18 @@ ul.sidebar-menu li a.active i {
   margin-bottom: 10px;
   padding: 3%;
   width:45%;
-  background-color: #e79c6a;
+  height: 70%;
+  background-color: #00fa9a;
   box-shadow: 0px 3px 23px rgba(140, 141, 132, 0.4);
 }
 
 .form-popup input{
-  border: none;
-  width: 45%;
-  margin: 7px;
-  padding: 7px;
+  border-color: #1e90ff;
+  border-width: 2px;
+  box-shadow: 0px 3px 23px rgba(140, 141, 132, 0.4);
+  width: 50%;
+  margin: 10px;
+  padding: 10px;
 }
 
 a.logo {
@@ -889,7 +893,7 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
 .custom-bar-chart .bar .value {
     position: absolute;
     bottom: 0;
-    background: #26abff;
+    background: #00cc00;
     color: #26abff;
     width: 100%;
     -webkit-border-radius: 5px 5px 0 0;

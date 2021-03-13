@@ -25,11 +25,16 @@ if (x.style.display==="none"){
 }
 }
 
-function getPrice(){
-  var weight = getElementById("weight1").value;
-  var price= 1500 + weight*10;
-  document.getElementById("display").innerHtml= price;
+
+function printDiv(divName){
+  var content= document.getElementById(divName).innerHTML;
+  var ocont= document.body.innerHTML;
+      document.body.innerHTML = content;
+      window.print();
+      document.body.innerHTML = ocont;
+
 }
+
 
 function openGet(){
   var p= 1500 + document.getElementById("weight1").value*10;
