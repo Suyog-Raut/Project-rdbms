@@ -54,7 +54,7 @@ app.post("/login", async (req, res) => {
  
   if (foundUser) {
       req.session.userId = foundUser._id;
-      if (email === "admin@test.com" && password === "123456") {
+      if (email === "EMP01" && password === "Password@123") {
           res.redirect("/new")
       }
       else {
