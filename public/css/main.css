@@ -6,7 +6,7 @@
 }
 
 .holder {
-  margin: 5em 0;
+  margin: 5em 0 0;
 }
 
 ul.SteppedProgress {
@@ -24,11 +24,10 @@ ul.SteppedProgress {
   list-style-type: none;
   color: #404140;
   line-height: normal;
-  text-transform: uppercase;
   flex: 1;
-  font-size: 22px;
+  font-size: 20px;
   position: relative;
-  padding: 0 2%
+  padding: 0 4%
 }
 
 .SteppedProgress li.boxed span, .SteppedProgress li.current span {
@@ -36,7 +35,7 @@ ul.SteppedProgress {
   border: 1px solid silver;
   color: gray;
   display: inline-block;
-  padding: 3px 6px;
+  padding: 6px 6px;
   position: relative;
   margin: 0px -6px;
   width: 100%
@@ -107,7 +106,7 @@ ul.SteppedProgress {
   color: #FFF;
   background: gray;
   border-radius: 15px;
-  margin: 0 auto 10px;
+  margin: 0 auto 70px;
   position: relative;
   z-index: 1
 }
@@ -115,7 +114,7 @@ ul.SteppedProgress {
 .SteppedProgress li:after {
   content: '';
   width: 100%;
-  height: 6px;
+  height: 10px;
   background: silver;
   position: absolute;
   left: -50%;
@@ -163,11 +162,11 @@ ul.SteppedProgress.Vertical li:before {
 
 .SteppedProgress.Vertical li:after {
   content: '';
-  width: 6px;
+  width: 3px;
   height: 100%;
   position: absolute;
   left: 12px;
-  top: -50%;
+  top: -100%;
   z-index: -1
 }
 
