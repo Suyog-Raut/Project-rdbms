@@ -13,7 +13,8 @@ const ConsgDetail = require("./models/ConsgDetail")
 
 const employeeController = require('./controllers/employeeController');
 const truckController = require('./controllers/truckController');
-
+const consgController = require('./controllers/consgController');
+const price=[];
 app.use(express.json());
 app.use(express.urlencoded({extended:false}))
 
@@ -24,7 +25,7 @@ app.set('view engine', 'ejs');
 
 app.engine('hbs', exphbs({ extname: 'hbs', defaultLayout: 'mainLayout', layoutsDir: __dirname + '/views/layouts/' }));
 
-app.set('view engine', 'handlebars');
+app.set('view engine', 'hbs');
 
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
@@ -34,70 +35,40 @@ app.get("/",(req,res)=>
 });
 app.get("/register",(req,res)=>
 {
-  res.render("register");
+  res.render("register.ejs");
 });
 
 
 app.get("/find",(req,res)=>
 {
-  res.render("find");
+  res.render("find.ejs");
 });
 app.get("/check",(req,res)=>
 {
-  res.render("check");
+  res.render("check.ejs");
 });
 app.get("/book",(req,res)=>
 {
-  res.render("book");
+  res.render("book.ejs");
 });
 
 
 app.post("/book",async(req,res)=>
 {
-  try {
-      var d = new Date.now();
-      var UserInput = new userDetail({
-        User_Id : d,
-        Name : req.body.name,
-        Address : req.body.address,
-        Mobile_No : req.body.mobile,
-        Email_Id : req.body.email 
-      })
-
-      var consgInput = new ConsgDetail({
-         Csg_No : d,
-         User_Id : d,
-        Weight : req.body.weight,
-        Sender : req.body.sname,
-        Receiver : req.body.rname,
-        Source_Branch : req.body.plocation,
-        Destination_Branch : req.body.dlocation
-        // truckid : 
-      })
-
-      
-
-      const input = await UserInput.save();
-      const input1 = await consgInput.save();
-      res.status(201).render("index");
-
-  } catch (error) {
-      res.status(400).send(error);
-  }
 
 });
 
 app.get("/signin",(req,res)=>
 {
-  res.render("signin");
+  res.render("signin.ejs");
 });
 app.get("/new",(req,res)=>
 {
-  res.render("new");
+  res.render("new.ejs");
 });
-app.get("/dash",(req,res)=>
+app.get("/dashm",(req,res)=>
 {
-  res.render("dash");
+  res.render("dashm.ejs");
 });
 
 app.listen(3000,()=> {
@@ -106,7 +77,7 @@ app.listen(3000,()=> {
 
 app.use('/employee', employeeController);
 app.use('/truck', truckController);
-
+app.use('/consignment', consgController);
 //Database part
 
 // const Employee = new mongoose.Schema({
@@ -136,7 +107,7 @@ app.use('/truck', truckController);
     // var MongoClient = require('mongodb').MongoClient;
 
     // var url = "mongodb://localhost:27017/";
-    
+
     //   MongoClient.connect(url, function(err, db) {
     //   if (err) throw err;
     //   var dbo = db.db("RdbmsProject");

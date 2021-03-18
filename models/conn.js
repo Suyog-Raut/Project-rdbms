@@ -10,3 +10,6 @@ mongoose.connect("mongodb://localhost:27017/RdbmsProject",{
 
 require('./employee.model');
 require('./truck.model');
+require('./cons.model');
+require('./customer.model');
+require('./bill.model');
