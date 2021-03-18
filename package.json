@@ -12,8 +12,9 @@
   "dependencies": {
     "bcrypt": "^5.0.1",
     "body-parser": "^1.18.3",
-    "ejs": "^2.6.1",
+    "ejs": "^2.7.4",
     "express": "^4.17.1",
+    "express-handlebars": "^5.2.1",
     "hbs": "^4.1.1",
     "mongo": "^0.1.0",
     "mongoose": "^5.11.19",

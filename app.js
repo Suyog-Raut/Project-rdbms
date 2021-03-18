@@ -1,29 +1,40 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
-const app = express();
-const bcrypt = require("bcrypt");
+const path = require('path');
+const exphbs = require('express-handlebars');
 
-require("./db/conn");
+const app = express();
+
+require("./models/conn");
 
 const userDetail = require("./models/userDetail")
 const ConsgDetail = require("./models/ConsgDetail")
-const SigninDetail = require("./models/Signin")
+
+const employeeController = require('./controllers/employeeController');
+const truckController = require('./controllers/truckController');
 
 app.use(express.json());
 app.use(express.urlencoded({extended:false}))
 
+app.use(bodyParser.json());
+app.set('views', path.join(__dirname, '/views/'));
+
 app.set('view engine', 'ejs');
+
+app.engine('hbs', exphbs({ extname: 'hbs', defaultLayout: 'mainLayout', layoutsDir: __dirname + '/views/layouts/' }));
+
+app.set('view engine', 'handlebars');
+
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
-const price=[];
 app.get("/",(req,res)=>
 {
-  res.render("index");
+  res.render("index.ejs");
 });
 app.get("/register",(req,res)=>
 {
-  res.render("register",{price:price});
+  res.render("register");
 });
 
 
@@ -39,65 +50,39 @@ app.get("/book",(req,res)=>
 {
   res.render("book");
 });
-app.get("/check2",(req,res)=>
-{
-  res.render("check2");
-});
-app.get("/login", (req, res) => {
-  res.render("signin");
-});
 
-app.post("/login", async (req, res) => {
-  const email = req.body.email;
-  const password = req.body.password;
-  const foundUser = await SigninDetail.findAndValidate(email, password);
- 
-  if (foundUser) {
-      req.session.userId = foundUser._id;
-      if (email === "EMP01" && password === "Password@123") {
-          res.redirect("/new")
-      }
-      else {
-          res.redirect("/dashm");
-      }
-  } else {
-    res.redirect("/");
-  }
-});
 
 app.post("/book",async(req,res)=>
 {
   try {
-
-      var uid = new Date().getMillisecondnows();
-      var cid = Math.floor(Math.random() * 100);
-      const UserInput = new userDetail({
-        User_Id : uid,
+      var d = new Date.now();
+      var UserInput = new userDetail({
+        User_Id : d,
         Name : req.body.name,
         Address : req.body.address,
         Mobile_No : req.body.mobile,
-        Email_Id : req.body.email
+        Email_Id : req.body.email 
       })
 
-      const consgInput = new ConsgDetail({
-        Csg_No : cid,
-        User_Id : uid,
+      var consgInput = new ConsgDetail({
+         Csg_No : d,
+         User_Id : d,
         Weight : req.body.weight,
         Sender : req.body.sname,
         Receiver : req.body.rname,
         Source_Branch : req.body.plocation,
-        Destination_Branch : req.body.dlocation,
+        Destination_Branch : req.body.dlocation
+        // truckid : 
       })
-      const weight = {
-         w: req.body.weight
-      }
-      price.push(weight);
+
+      
+
       const input = await UserInput.save();
       const input1 = await consgInput.save();
-      res.redirect("/register");
+      res.status(201).render("index");
 
   } catch (error) {
-      res.send(error);
+      res.status(400).send(error);
   }
 
 });
@@ -110,14 +95,17 @@ app.get("/new",(req,res)=>
 {
   res.render("new");
 });
-app.get("/dashm",(req,res)=>
+app.get("/dash",(req,res)=>
 {
-  res.render("dashm");
+  res.render("dash");
 });
 
 app.listen(3000,()=> {
   console.log("Server started on port 3000");
 });
+
+app.use('/employee', employeeController);
+app.use('/truck', truckController);
 
 //Database part
 
@@ -132,14 +120,6 @@ app.listen(3000,()=> {
 // });
 
 
-// const Truck = new mongoose.Schema({
-//   Truck_No : String,
-//   Current_Branch : String,
-//   No_Of_Csg_Handled : Number,
-//   Status : String,
-//   Usage : String
-// });
-
 // const Bill = new mongoose.Schema({
 //   CSG_No : Number,
 //   Customer_ID : Number,
@@ -149,3 +129,21 @@ app.listen(3000,()=> {
 //   Price : Number,
 //   Truck_No : String,
 // })
+
+
+    // var truckid;
+
+    // var MongoClient = require('mongodb').MongoClient;
+
+    // var url = "mongodb://localhost:27017/";
+    
+    //   MongoClient.connect(url, function(err, db) {
+    //   if (err) throw err;
+    //   var dbo = db.db("RdbmsProject");
+    //   dbo.collection("trucks").find({}, { projection: { assignd: false } }).toArray(function(err, res) {
+    //     if (err) throw err;
+    //     truckid = res[0]._id;
+    //     console.log(res);
+    //     db.close();
+    //   });
+    // });

@@ -8,3 +8,8 @@ function appear() {
     x.style.display = "none";
   }
 }
+
+// function myFunction() {
+//   let one = Date.now();
+//   console.log(one);
+// }

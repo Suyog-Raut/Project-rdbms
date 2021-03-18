@@ -26,8 +26,8 @@ const consgSchema = new mongoose.Schema({
         required : true
     },
     User_Id : {
-        type : Number,
-        //required : true
+        type : String,
+        // required : true
     }
     
   });

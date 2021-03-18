@@ -1,0 +1,33 @@
+<h3>{{viewTitle}}</h3>
+
+<form action="/truck" method="POST" autocomplete="off">
+    <input type="hidden" name="_id" value="{{truck._id}}">
+    <div class="form-group">
+        <label>Truck ID</label>
+        <input type="text" class="form-control" name="t_id" placeholder="Truck Id" value="{{truck.t_id}}">
+    </div>
+
+    <div class="form-group">
+        <label>Truck No</label>
+        <input type="text" class="form-control" name="t_no" placeholder="Truck No" value="{{truck.t_no}}">
+    </div>
+    
+    <div class="form-group">
+        <label>Assigned</label>
+        <input type="text" class="form-control" name="assigned" placeholder="Assigned" value="{{truck.assigned}}">
+    </div>
+
+    <div class="form-group">
+        <label>Stage</label>
+        <input type="text" class="form-control" name="stage" placeholder="Stage" value="{{truck.stage}}">
+    </div>
+    
+     <div class="form-group">
+        <label>No. Of Consignment Handled</label>
+        <input type="text" class="form-control" name="no_of_csg_handled" placeholder="No. Of Consignment Handled" value="{{truck.no_of_csg_handled}}">
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-info"><i class="fa fa-database"></i> Submit</button>
+        <a class="btn btn-secondary" href="/truck/list"><i class="fa fa-list-alt"></i> View All</a>
+    </div>
+</form>

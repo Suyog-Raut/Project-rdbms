@@ -1,4 +1,15 @@
 <%- include("partials/header2.ejs"); -%>
+<style>
+    
+.inv-input{
+    display: flex;
+  position: absolute;
+    color: white;
+right: 1px;
+
+}
+</style>
+
 <div class="page-wrapper bg-purple p-t-100 p-b-100 font-robo">
     <div class="wrapper wrapper--w680">
         <div class="card card-1">
@@ -33,6 +44,17 @@
                     <div class="input-group">
                         <input class="input--style-1" type="text" id="weight1" placeholder="WEIGHT OF PACKAGE" name="weight">
                     </div>
+
+                    <div class="p-t-20">
+                        <button class="btn btn--radius btn--green" type="button" id="id-gen" >Generate User Id</button>
+                    </div>
+                    
+
+                    <div class="inv-input" id="inv-input-id"> 
+                        <input type="text" name="userid">
+                    </div>
+                 
+                    
                     <div class="p-t-20">
                         <button class="btn btn--radius btn--green" type="submit" >Submit</button>
                     </div>
@@ -42,8 +64,20 @@
     </div>
 </div>
 
+<script>
 
+    
+    let Id = document.querySelector("#id-gen");
+    
+    Id.addEventListener('click',function(){
 
+        let genid = Date.now();
 
+        let IdInp = document.getElementById("inv-input-id").innerHTML = genid; 
 
+        console.log(genid);
+    });
+                 
+
+</script>
   <%- include("partials/footer2.ejs"); -%>
