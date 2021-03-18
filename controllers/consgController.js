@@ -8,7 +8,7 @@ const Bill = mongoose.model('Bill');
 router.get('/', (req, res) => {
   res.render("consignment/addOrEdit.hbs", {
     layout: 'newLayout',
-    viewTitle: "Insert Consignment"
+    viewTitle: "Book Consignment"
   });
 });
 
@@ -57,7 +57,7 @@ bill.save((err, doc) => {
     if (err.name == 'ValidationError') {
       handleValidationError(err, req.body);
       res.render("consignment/addOrEdit.hbs", {
-        viewTitle: "Insert Consignment",
+        viewTitle: "Book Consignment",
         consignment: req.body
       });
     } else
@@ -67,7 +67,7 @@ bill.save((err, doc) => {
 }
 
 function updateRecord(req, res) {
-  Consign.findOneAndUpdate({
+  Bill.findOneAndUpdate({
     _id: req.body._id
   }, req.body, {
     new: true
@@ -88,7 +88,7 @@ function updateRecord(req, res) {
 }
 
 router.get('/list', (req, res) => {
-  Consign.find((err, docs) => {
+  Bill.find((err, docs) => {
     if (!err) {
       res.render("consignment/list.hbs", {
         list: docs
@@ -116,7 +116,7 @@ function handleValidationError(err, body) {
 }
 
 router.get('/:id', (req, res) => {
-  Consign.findById(req.params.id, (err, doc) => {
+  Bill.findById(req.params.id, (err, doc) => {
     if (!err) {
       res.render("consignment/addOrEdit.hbs", {
         viewTitle: "Update consignment",
@@ -127,7 +127,7 @@ router.get('/:id', (req, res) => {
 });
 
 router.get('/delete/:id', (req, res) => {
-  Consign.findByIdAndRemove(req.params.id, (err, doc) => {
+Bill.findByIdAndRemove(req.params.id, (err, doc) => {
     if (!err) {
       res.redirect('/consignment/list');
     } else {

@@ -1,0 +1,36 @@
+<h3><a class="btn btn-secondary" href="/consignment"><i class="fa fa-plus"></i> Create New</a> Consignment List</h3>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Mobile</th>
+            <th>Email</th>
+            <th>Sender</th>
+            <th>Reciever</th>
+            <th>Source_Branch</th>
+            <th>Destination_Branch</th>
+            <th>Weight</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each list}}
+        <tr>
+            <td>{{this.name}}</td>
+            <td>{{this.address}}</td>
+            <td>{{this.mobile}}</td>
+            <td>{{this.email}}</td>
+            <td>{{this.Sender}}</td>
+            <td>{{this.Receiver}}</td>
+            <td>{{this.Source_Branch}}</td>
+            <td>{{this.Destination_Branch}}</td>
+            <td>{{this.Weight}}</td>
+            <td>
+                <a href="/consignment/{{this._id}}"><i class="fa fa-pencil fa-lg" aria-hidden="true"></i></a>
+                <a href="/consignment/delete/{{this._id}}" onclick="return confirm('Are you sure to delete this record ?');"><i class="fa fa-trash fa-lg" aria-hidden="true"></i></a>
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
