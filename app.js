@@ -24,7 +24,7 @@ app.set('view engine', 'ejs');
 
 app.engine('hbs', exphbs({ extname: 'hbs', defaultLayout: 'mainLayout', layoutsDir: __dirname + '/views/layouts/' }));
 
-app.set('view engine', 'handlebars');
+app.set('view engine', 'hbs');
 
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
@@ -34,21 +34,21 @@ app.get("/",(req,res)=>
 });
 app.get("/register",(req,res)=>
 {
-  res.render("register");
+  res.render("register.ejs");
 });
 
 
 app.get("/find",(req,res)=>
 {
-  res.render("find");
+  res.render("find.ejs");
 });
 app.get("/check",(req,res)=>
 {
-  res.render("check");
+  res.render("check.ejs");
 });
 app.get("/book",(req,res)=>
 {
-  res.render("book");
+  res.render("book.ejs");
 });
 
 
@@ -79,7 +79,7 @@ app.post("/book",async(req,res)=>
 
       const input = await UserInput.save();
       const input1 = await consgInput.save();
-      res.status(201).render("index");
+      res.status(201).render("index.ejs");
 
   } catch (error) {
       res.status(400).send(error);
@@ -89,15 +89,15 @@ app.post("/book",async(req,res)=>
 
 app.get("/signin",(req,res)=>
 {
-  res.render("signin");
+  res.render("signin.ejs");
 });
 app.get("/new",(req,res)=>
 {
-  res.render("new");
+  res.render("new.ejs");
 });
 app.get("/dash",(req,res)=>
 {
-  res.render("dash");
+  res.render("dashm.ejs");
 });
 
 app.listen(3000,()=> {
