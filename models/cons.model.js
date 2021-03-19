@@ -25,10 +25,6 @@ const ConsSchema = new mongoose.Schema({
         type : String,
         required : true
     }
-    // User_Id : {
-    //     type : String,
-    //     // required : true
-    // }
 
   });
   

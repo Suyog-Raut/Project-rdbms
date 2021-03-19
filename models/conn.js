@@ -2,6 +2,8 @@ const mongoose = require("mongoose");
 
 mongoose.connect("mongodb://localhost:27017/RdbmsProject",{
     useNewUrlParser : true,
+    useFindAndModify : false,
+    useUnifiedTopology: true 
 }).then(()=> {
     console.log("connection successful");
 }).catch((e)=> {
