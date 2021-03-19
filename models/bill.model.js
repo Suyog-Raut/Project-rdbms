@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const billSchema = new mongoose.Schema({
+const BillSchema = new mongoose.Schema({
 
   name: {
       type: String,
@@ -38,13 +38,13 @@ receiver  : {
       required : true
   },
   cost : {
-    type : Number 
+    type : Number
   }
 });
 
-  billSchema.path('email').validate((val) => {
+  BillSchema.path('email').validate((val) => {
       emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       return emailRegex.test(val);
   }, 'Invalid e-mail.');
 
-  mongoose.model('Bill', billSchema);
+  mongoose.model('Bill', BillSchema);

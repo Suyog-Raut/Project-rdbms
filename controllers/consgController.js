@@ -48,7 +48,7 @@ bill.sender = req.body.Sender;
 bill.receiver = req.body.Receiver;
 bill.sourceBranch = req.body.Source_Branch;
 bill.destinationBranch = req.body.Destination_Branch;
-bill.cost = req.body.Weight*10+2000;
+bill.cost = 2000;
 
 bill.save((err, doc) => {
   if (!err)
@@ -57,7 +57,8 @@ bill.save((err, doc) => {
     if (err.name == 'ValidationError') {
       handleValidationError(err, req.body);
       res.render("consignment/addOrEdit.hbs", {
-        viewTitle: "Book Consignment",
+        layout: 'newLayout',
+        viewTitle: "Update Consignment",
         consignment: req.body
       });
     } else
@@ -137,3 +138,19 @@ Bill.findByIdAndRemove(req.params.id, (err, doc) => {
 });
 
 module.exports = router;
+// var cust = new Customer();
+// cust.name = req.body.name;
+// cust.email = req.body.email;
+// cust.address = req.body.address;
+// cust.mobile = req.body.mobile;
+//
+// cust.save();
+//
+// var cons = new Consign();
+// cons.Weight = req.body.Weight;
+// cons.Sender = req.body.Sender;
+// cons.Receiver = req.body.Receiver;
+// cons.Source_Branch = req.body.Source_Branch;
+// cons.Destination_Branch = req.body.Destination_Branch;
+// // cons.Sender = req.body.Sender;
+// cons.save();
