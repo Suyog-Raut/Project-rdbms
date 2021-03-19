@@ -5,6 +5,7 @@ const Employee = mongoose.model('Employee');
 
 
 
+
 router.get('/', (req, res) => {
     res.render("employee/addOrEdit.hbs", {
         viewTitle: "Insert Employee"

@@ -39,6 +39,9 @@ receiver  : {
   },
   cost : {
     type : Number
+  },
+  truck_id : {
+    type : Number
   }
 });
 
