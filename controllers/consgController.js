@@ -52,7 +52,6 @@ function insertRecord(req, res) {
   cons.save();
 
   var bill = new Bill();
-<<<<<<< HEAD
 bill.name = req.body.name;
 bill.email = req.body.email;
 bill.address = req.body.address;
@@ -64,7 +63,7 @@ bill.sourceBranch = req.body.Source_Branch;
 bill.destinationBranch = req.body.Destination_Branch;
 var r = req.body.Weight*10+2000;
 bill.cost= r;
-=======
+
   bill.name = req.body.name;
   bill.email = req.body.email;
   bill.address = req.body.address;
@@ -85,7 +84,6 @@ bill.cost= r;
       console.log('Error during record update : ' + err);
 });
 
->>>>>>> 865a57f117b36447c889a562dc80168b062cbc44
 bill.save((err, doc) => {
   if (!err)
     res.render('consignment/success.hbs',{
