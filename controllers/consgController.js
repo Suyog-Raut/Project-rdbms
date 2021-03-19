@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
     layout: 'newLayout',
     viewTitle: "Book Consignment"
   });
-  
+
   Truck.find({assigned : "false"},(err, docs) => {
     if (!err) {
         tid = docs[0].t_id;
@@ -76,11 +76,11 @@ bill.cost= r;
   bill.cost = 2000;
   bill.truck_id = tid;
 
-  Truck.findOneAndUpdate({ 
-    query: {"t_id" : tid }, 
-    update : {"assigned" : "true" } 
+  Truck.findOneAndUpdate({
+    query: {"t_id" : tid },
+    update : {"assigned" : "true" }
   }, (err, doc) => {
-    if (err) 
+    if (err)
       console.log('Error during record update : ' + err);
 });
 
@@ -89,7 +89,8 @@ bill.save((err, doc) => {
     res.render('consignment/success.hbs',{
       viewTitle: "Booked the Consignment",
       consignment: req.body,
-      r: r
+      r: r,
+      tid: tid
     });
   else {
     if (err.name == 'ValidationError') {
