@@ -48,11 +48,15 @@ bill.sender = req.body.Sender;
 bill.receiver = req.body.Receiver;
 bill.sourceBranch = req.body.Source_Branch;
 bill.destinationBranch = req.body.Destination_Branch;
-bill.cost = 2000;
-
+var r = req.body.Weight*10+2000;
+bill.cost= r;
 bill.save((err, doc) => {
   if (!err)
-    res.redirect('consignment/list');
+    res.render('consignment/success.hbs',{
+      viewTitle: "Booked the Consignment",
+      consignment: req.body,
+      r: r
+    });
   else {
     if (err.name == 'ValidationError') {
       handleValidationError(err, req.body);
