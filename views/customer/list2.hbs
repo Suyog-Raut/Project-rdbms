@@ -1,0 +1,23 @@
+<h3>Consignment List</h3>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Sender</th>
+            <th>Reciever</th>
+            <th>Sender's Address</th>
+            <th>Reciever's Address</th>
+            <th>Weight</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each list}}
+        <tr>
+            <td>{{this.Sender}}</td>
+            <td>{{this.Receiver}}</td>
+            <td>{{this.Source_Branch}}</td>
+            <td>{{this.Destination_Branch}}</td>
+            <td>{{this.Weight}}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>

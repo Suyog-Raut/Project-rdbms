@@ -8,12 +8,10 @@ const app = express();
 
 require("./models/conn");
 
-const userDetail = require("./models/userDetail")
-const ConsgDetail = require("./models/ConsgDetail")
-
 const employeeController = require('./controllers/employeeController');
 const truckController = require('./controllers/truckController');
 const consgController = require('./controllers/consgController');
+const custController = require('./controllers/custController');
 const price=[];
 app.use(express.json());
 app.use(express.urlencoded({extended:false}))
@@ -47,49 +45,6 @@ app.get("/check",(req,res)=>
 {
   res.render("check.ejs");
 });
-// app.get("/book",(req,res)=>
-// {
-//   res.render("book.ejs");
-// });
-
-
-// app.post("/book",async(req,res)=>
-// {
-// // <<<<<<< HEAD
-// // =======
-//   try {
-//       var d = new Date.now();
-//       var UserInput = new userDetail({
-//         User_Id : d,
-//         Name : req.body.name,
-//         Address : req.body.address,
-//         Mobile_No : req.body.mobile,
-//         Email_Id : req.body.email
-//       })
-//
-//       var consgInput = new ConsgDetail({
-//          Csg_No : d,
-//          User_Id : d,
-//         Weight : req.body.weight,
-//         Sender : req.body.sname,
-//         Receiver : req.body.rname,
-//         Source_Branch : req.body.plocation,
-//         Destination_Branch : req.body.dlocation
-//         // truckid :
-//       })
-//
-//
-//
-//       const input = await UserInput.save();
-//       const input1 = await consgInput.save();
-//       res.status(201).render("index.ejs");
-//
-//   } catch (error) {
-//       res.status(400).send(error);
-//   }
-// // >>>>>>> c25e242c8fd6129806f6f1f1fa60a09c6445d650
-//
-// });
 
 app.get("/signin",(req,res)=>
 {
@@ -111,6 +66,7 @@ app.listen(3000,()=> {
 app.use('/employee', employeeController);
 app.use('/truck', truckController);
 app.use('/consignment', consgController);
+app.use('/customer', custController);
 //Database part
 
 // const Employee = new mongoose.Schema({

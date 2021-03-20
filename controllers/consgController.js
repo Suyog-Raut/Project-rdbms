@@ -63,17 +63,6 @@ bill.sourceBranch = req.body.Source_Branch;
 bill.destinationBranch = req.body.Destination_Branch;
 var r = req.body.Weight*10+2000;
 bill.cost= r;
-
-  bill.name = req.body.name;
-  bill.email = req.body.email;
-  bill.address = req.body.address;
-  bill.mobile = req.body.mobile;
-  bill.weight = req.body.Weight;
-  bill.sender = req.body.Sender;
-  bill.receiver = req.body.Receiver;
-  bill.sourceBranch = req.body.Source_Branch;
-  bill.destinationBranch = req.body.Destination_Branch;
-  bill.cost = 2000;
   bill.truck_id = tid;
 
   Truck.findOneAndUpdate({
@@ -87,7 +76,7 @@ bill.cost= r;
 bill.save((err, doc) => {
   if (!err)
     res.render('consignment/success.hbs',{
-      viewTitle: "Booked the Consignment",
+      viewTitle: "You have successfully booked the Consignment",
       consignment: req.body,
       r: r,
       tid: tid
@@ -177,19 +166,3 @@ Bill.findByIdAndRemove(req.params.id, (err, doc) => {
 });
 
 module.exports = router;
-// var cust = new Customer();
-// cust.name = req.body.name;
-// cust.email = req.body.email;
-// cust.address = req.body.address;
-// cust.mobile = req.body.mobile;
-//
-// cust.save();
-//
-// var cons = new Consign();
-// cons.Weight = req.body.Weight;
-// cons.Sender = req.body.Sender;
-// cons.Receiver = req.body.Receiver;
-// cons.Source_Branch = req.body.Source_Branch;
-// cons.Destination_Branch = req.body.Destination_Branch;
-// // cons.Sender = req.body.Sender;
-// cons.save();
