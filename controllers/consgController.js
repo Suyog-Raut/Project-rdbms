@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const Consign = mongoose.model('Consign');
 const Customer = mongoose.model('Customer1');
 const Bill = mongoose.model('Bill');
-const Truck = mongoose.model("Truck");
+const Truck = mongoose.model('Truck');
 
 var tid;
 
@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
     layout: 'newLayout',
     viewTitle: "Book Consignment"
   });
-  
+
   Truck.find({assigned : "false"},(err, docs) => {
     if (!err) {
         tid = docs[0].t_id;
@@ -52,30 +52,34 @@ function insertRecord(req, res) {
   cons.save();
 
   var bill = new Bill();
-  bill.name = req.body.name;
-  bill.email = req.body.email;
-  bill.address = req.body.address;
-  bill.mobile = req.body.mobile;
-  bill.weight = req.body.Weight;
-  bill.sender = req.body.Sender;
-  bill.receiver = req.body.Receiver;
-  bill.sourceBranch = req.body.Source_Branch;
-  bill.destinationBranch = req.body.Destination_Branch;
+bill.name = req.body.name;
+bill.email = req.body.email;
+bill.address = req.body.address;
+bill.mobile = req.body.mobile;
+bill.weight = req.body.Weight;
+bill.sender = req.body.Sender;
+bill.receiver = req.body.Receiver;
+bill.sourceBranch = req.body.Source_Branch;
+bill.destinationBranch = req.body.Destination_Branch;
+var r = req.body.Weight*10+2000;
+bill.cost= r;
   bill.truck_id = tid;
-  var r = req.body.Weight*10+2000;
-  bill.cost= r;
-  
-  Truck.findOneAndUpdate({ t_id : tid },{ assigned : 'true' },(err,docs)=> {
-    if(err)
-      console.log(err);
-  });
+
+  Truck.findOneAndUpdate({
+    query: {"t_id" : tid },
+    update : {"assigned" : "true" }
+  }, (err, doc) => {
+    if (err)
+      console.log('Error during record update : ' + err);
+});
 
 bill.save((err, doc) => {
   if (!err)
     res.render('consignment/success.hbs',{
-      viewTitle: "Booked the Consignment",
+      viewTitle: "You have successfully booked the Consignment",
       consignment: req.body,
-      r : r
+      r: r,
+      tid: tid
     });
   else {
     if (err.name == 'ValidationError') {
@@ -160,6 +164,5 @@ Bill.findByIdAndRemove(req.params.id, (err, doc) => {
     }
   }).lean();
 });
-
 
 module.exports = router;

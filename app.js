@@ -3,18 +3,18 @@ const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const path = require('path');
 const exphbs = require('express-handlebars');
+const bcrypt = require("bcrypt");
+const session = require("express-session");
 
 const app = express();
 
 require("./models/conn");
 
-const userDetail = require("./models/userDetail")
-const ConsgDetail = require("./models/ConsgDetail")
-
 const employeeController = require('./controllers/employeeController');
 const truckController = require('./controllers/truckController');
 const consgController = require('./controllers/consgController');
-const price=[];
+const custController = require('./controllers/custController');
+const User = require('./models/employee.model');
 app.use(express.json());
 app.use(express.urlencoded({extended:false}))
 
@@ -26,18 +26,21 @@ app.set('view engine', 'ejs');
 app.engine('hbs', exphbs({ extname: 'hbs', defaultLayout: 'mainLayout', layoutsDir: __dirname + '/views/layouts/' }));
 
 app.set('view engine', 'hbs');
-
+app.use(session({secret: "Secret", resave: false, saveUninitialized: true}));
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
+
+const isLogin = (req,res,next) => {
+    if(!req.session.userId)
+        res.redirect("/signin");
+    else
+        next();
+};
+
 app.get("/",(req,res)=>
 {
   res.render("index.ejs");
 });
-app.get("/register",(req,res)=>
-{
-  res.render("register.ejs");
-});
-
 
 app.get("/find",(req,res)=>
 {
@@ -47,62 +50,36 @@ app.get("/check",(req,res)=>
 {
   res.render("check.ejs");
 });
-// app.get("/book",(req,res)=>
-// {
-//   res.render("book.ejs");
-// });
-
-
-// app.post("/book",async(req,res)=>
-// {
-// // <<<<<<< HEAD
-// // =======
-//   try {
-//       var d = new Date.now();
-//       var UserInput = new userDetail({
-//         User_Id : d,
-//         Name : req.body.name,
-//         Address : req.body.address,
-//         Mobile_No : req.body.mobile,
-//         Email_Id : req.body.email
-//       })
-//
-//       var consgInput = new ConsgDetail({
-//          Csg_No : d,
-//          User_Id : d,
-//         Weight : req.body.weight,
-//         Sender : req.body.sname,
-//         Receiver : req.body.rname,
-//         Source_Branch : req.body.plocation,
-//         Destination_Branch : req.body.dlocation
-//         // truckid :
-//       })
-//
-//
-//
-//       const input = await UserInput.save();
-//       const input1 = await consgInput.save();
-//       res.status(201).render("index.ejs");
-//
-//   } catch (error) {
-//       res.status(400).send(error);
-//   }
-// // >>>>>>> c25e242c8fd6129806f6f1f1fa60a09c6445d650
-//
-// });
 
 app.get("/signin",(req,res)=>
 {
   res.render("signin.ejs");
 });
-app.get("/new",(req,res)=>
+
+app.post("/signin", async (req,res)=>
 {
-  res.render("new.ejs");
+  if(req.body.email == "admin@gmail.com" && req.body.password == "password123"){
+    res.render("new.ejs");
+  }
+  else {
+    const { name, password } = req.body;
+    const foundUser = await User.findAndValidate(name, password);
+       if(foundUser){
+           req.session.userId = foundUser._id;
+           res.render("dashm.ejs",{
+             name: req.body.name
+           });
+       }
+       else{
+           res.redirect("/signin");
+       }
+  }
 });
-app.get("/dashm",(req,res)=>
-{
-  res.render("dashm.ejs");
-});
+
+app.post("/logout",(req,res)=>{
+    req.session.userId = null;
+    res.redirect("/signin")
+})
 
 app.listen(3000,()=> {
   console.log("Server started on port 3000");
@@ -111,6 +88,7 @@ app.listen(3000,()=> {
 app.use('/employee', employeeController);
 app.use('/truck', truckController);
 app.use('/consignment', consgController);
+app.use('/customer', custController);
 //Database part
 
 // const Employee = new mongoose.Schema({

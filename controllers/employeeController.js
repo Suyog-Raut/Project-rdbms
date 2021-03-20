@@ -29,6 +29,7 @@ function insertRecord(req, res) {
     employee.post = req.body.post;
     employee.employee_id = req.body.employee_id;
     employee.password = req.body.password;
+     req.session.userId = employee._id;
     employee.save((err, doc) => {
         if (!err)
             res.redirect('employee/list');
@@ -68,7 +69,7 @@ router.get('/list', (req, res) => {
         if (!err) {
             res.render("employee/list.hbs", {
                 list : docs
-            });  
+            });
         }
         else {
             console.log('Error in retrieving employee list :' + err);
