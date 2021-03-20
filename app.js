@@ -3,6 +3,8 @@ const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const path = require('path');
 const exphbs = require('express-handlebars');
+const bcrypt = require("bcrypt");
+const session = require("express-session");
 
 const app = express();
 
@@ -12,7 +14,7 @@ const employeeController = require('./controllers/employeeController');
 const truckController = require('./controllers/truckController');
 const consgController = require('./controllers/consgController');
 const custController = require('./controllers/custController');
-const price=[];
+const User = require('./models/employee.model');
 app.use(express.json());
 app.use(express.urlencoded({extended:false}))
 
@@ -24,18 +26,21 @@ app.set('view engine', 'ejs');
 app.engine('hbs', exphbs({ extname: 'hbs', defaultLayout: 'mainLayout', layoutsDir: __dirname + '/views/layouts/' }));
 
 app.set('view engine', 'hbs');
-
+app.use(session({secret: "Secret", resave: false, saveUninitialized: true}));
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
+
+const isLogin = (req,res,next) => {
+    if(!req.session.userId)
+        res.redirect("/signin");
+    else
+        next();
+};
+
 app.get("/",(req,res)=>
 {
   res.render("index.ejs");
 });
-app.get("/register",(req,res)=>
-{
-  res.render("register.ejs");
-});
-
 
 app.get("/find",(req,res)=>
 {
@@ -50,14 +55,31 @@ app.get("/signin",(req,res)=>
 {
   res.render("signin.ejs");
 });
-app.get("/new",(req,res)=>
+
+app.post("/signin", async (req,res)=>
 {
-  res.render("new.ejs");
+  if(req.body.email == "admin@gmail.com" && req.body.password == "password123"){
+    res.render("new.ejs");
+  }
+  else {
+    const { name, password } = req.body;
+    const foundUser = await User.findAndValidate(name, password);
+       if(foundUser){
+           req.session.userId = foundUser._id;
+           res.render("dashm.ejs",{
+             name: req.body.name
+           });
+       }
+       else{
+           res.redirect("/signin");
+       }
+  }
 });
-app.get("/dashm",(req,res)=>
-{
-  res.render("dashm.ejs");
-});
+
+app.post("/logout",(req,res)=>{
+    req.session.userId = null;
+    res.redirect("/signin")
+})
 
 app.listen(3000,()=> {
   console.log("Server started on port 3000");
