@@ -1,25 +1,28 @@
 <h3>Customer List</h3>
 <table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Address</th>
-            <th>Mobile</th>
-            <th>Email</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        {{#each list}}
-        <tr>
-            <td>{{this.name}}</td>
-            <td>{{this.address}}</td>
-            <td>{{this.mobile}}</td>
-            <td>{{this.email}}</td>
-            <td>
-
-            </td>
-        </tr>
-        {{/each}}
-    </tbody>
+  <thead>
+    <tr>
+        <th>CID</th>
+      <th>Name</th>
+      <th>Address</th>
+      <th>Mobile</th>
+      <th>Email</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each list}}
+      <tr>
+        <td>
+          {{this._id}}
+        </td>
+        <td>{{this.name}}</td>
+        <td>{{this.address}}</td>
+        <td>{{this.mobile}}</td>
+        <td>{{this.email}}</td>
+        <td>
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
 </table>

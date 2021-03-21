@@ -76,6 +76,7 @@ bill.cost= r;
 bill.save((err, doc) => {
   if (!err)
     res.render('consignment/success.hbs',{
+      layout: "mainLayout2",
       viewTitle: "You have successfully booked the Consignment",
       consignment: req.body,
       r: r,
