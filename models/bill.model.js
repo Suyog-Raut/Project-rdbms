@@ -42,7 +42,7 @@ receiver  : {
   },
   truck_id : {
     type : Number
-  }
+  },
 });
 
   BillSchema.path('email').validate((val) => {

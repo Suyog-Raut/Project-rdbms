@@ -63,7 +63,8 @@ bill.sourceBranch = req.body.Source_Branch;
 bill.destinationBranch = req.body.Destination_Branch;
 var r = req.body.Weight*10+2000;
 bill.cost= r;
-  bill.truck_id = tid;
+bill.truck_id = tid;
+
 
   Truck.findOneAndUpdate({
     query: {"t_id" : tid },
@@ -72,6 +73,15 @@ bill.cost= r;
     if (err)
       console.log('Error during record update : ' + err);
 });
+
+var r = req.body.Weight*50+2000;
+  bill.cost= r;
+
+  Truck.findOneAndUpdate({ t_id : tid },{ assigned : 'true' },(err,docs)=> {
+    if(err)
+      console.log(err);
+  });
+
 
 bill.save((err, doc) => {
   if (!err)
