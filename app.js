@@ -5,6 +5,7 @@ const path = require('path');
 const exphbs = require('express-handlebars');
 const bcrypt = require("bcrypt");
 const session = require("express-session");
+const mongoose = require('mongoose');
 
 const app = express();
 
@@ -16,6 +17,8 @@ const consgController = require('./controllers/consgController');
 const custController = require('./controllers/custController');
 const User = require('./models/employee.model');
 const Bill = require('./models/bill.model');
+
+const Truck = mongoose.model('Truck');
 
 app.use(express.json());
 app.use(express.urlencoded({extended:false}))
@@ -46,8 +49,33 @@ app.get("/",(req,res)=>
 
 app.get("/find",(req,res)=>
 {
-  res.render("find.ejs");
+  res.render("check-track.ejs");
 });
+
+app.post("/find", async(req,res)=>
+{
+  const cnum = req.body.csg_no;
+  const cdetail = await Bill.findNow(cnum);
+  if(cdetail) {
+    const tdetail = await Truck.findOne({t_id:cdetail.truck_id});
+    var consgdetail = [];
+    for(var i=1;i<=6;i++)
+    {
+      if(i<tdetail.stage)
+        consgdetail[i] = "complete"
+      else  
+        consgdetail[i] = ""
+    }
+    
+    res.render("find.ejs",{
+      consgdetail : consgdetail  
+    });
+  }
+  else {
+    res.send("Check the Consignment Number.");
+  }
+});
+
 
 app.get("/check",(req,res)=>
 {
@@ -57,7 +85,7 @@ app.get("/check",(req,res)=>
 app.post("/check", async(req,res)=>
 {
   const no = req.body.csg_no;
-  const x = await Bill.findNow(no);
+  const x = await Bill.findOne(no);
   if(x) {
     res.render("register.ejs",{
       x: x

@@ -13,16 +13,6 @@ router.get('/', (req, res) => {
     layout: 'newLayout',
     viewTitle: "Book Consignment"
   });
-
-  Truck.find({assigned : "false"},(err, docs) => {
-    if (!err) {
-        tid = docs[0].t_id;
-    }
-    else {
-        console.log('Error in retrieving truck list :' + err);
-    }
-}).lean();
-
 });
 
 router.post('/', (req, res) => {
@@ -63,6 +53,9 @@ bill.sourceBranch = req.body.Source_Branch;
 bill.destinationBranch = req.body.Destination_Branch;
 var r = req.body.Weight*10+2000;
 bill.cost= r;
+
+gettruckid();
+
 bill.truck_id = tid;
 
 
@@ -175,5 +168,18 @@ Bill.findByIdAndRemove(req.params.id, (err, doc) => {
     }
   }).lean();
 });
+
+function gettruckid(){
+
+  Truck.find({assigned : "false"},(err, docs) => {
+    if (!err) {
+        tid = docs[0].t_id;
+    }
+    else {
+        console.log('Error in retrieving truck list :' + err);
+    }
+}).lean();
+
+}
 
 module.exports = router;
