@@ -2,16 +2,19 @@
 <table class="table table-striped">
     <thead>
         <tr>
+          <th>ID</th>
             <th>Sender</th>
             <th>Reciever</th>
             <th>Sender's Address</th>
             <th>Reciever's Address</th>
             <th>Weight</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
         {{#each list}}
         <tr>
+          <td>{{this._id}}</td>
             <td>{{this.Sender}}</td>
             <td>{{this.Receiver}}</td>
             <td>{{this.Source_Branch}}</td>

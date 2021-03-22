@@ -15,6 +15,8 @@ const truckController = require('./controllers/truckController');
 const consgController = require('./controllers/consgController');
 const custController = require('./controllers/custController');
 const User = require('./models/employee.model');
+const Bill = require('./models/bill.model');
+
 app.use(express.json());
 app.use(express.urlencoded({extended:false}))
 
@@ -46,9 +48,24 @@ app.get("/find",(req,res)=>
 {
   res.render("find.ejs");
 });
+
 app.get("/check",(req,res)=>
 {
   res.render("check.ejs");
+});
+
+app.post("/check", async(req,res)=>
+{
+  const no = req.body.csg_no;
+  const x = await Bill.findNow(no);
+  if(x) {
+    res.render("register.ejs",{
+      x: x
+    });
+  }
+  else {
+    res.send("Check the Consignment Number.");
+  }
 });
 
 app.get("/signin",(req,res)=>
@@ -58,7 +75,7 @@ app.get("/signin",(req,res)=>
 
 app.post("/signin", async (req,res)=>
 {
-  if(req.body.email == "admin@gmail.com" && req.body.password == "password123"){
+  if(req.body.name == "admin" && req.body.password == "password123"){
     res.render("new.ejs");
   }
   else {

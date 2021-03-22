@@ -50,4 +50,20 @@ receiver  : {
       return emailRegex.test(val);
   }, 'Invalid e-mail.');
 
-  mongoose.model('Bill', BillSchema);
+    BillSchema.statics.findNow = async function (id,err) {
+      if (id.match(/^[0-9a-fA-F]{24}$/)) {
+        const foundC = await this.findOne({_id: id});
+        if(foundC){
+          return foundC;
+        }
+      else {
+        return false;
+      }
+    }
+    else if(err) {
+      throw(err);
+    }
+      }
+
+
+  module.exports = mongoose.model('Bill', BillSchema);
